@@ -1,18 +1,21 @@
 import sys
 import random
 
-from PyQt5 import uic
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 from PyQt5.QtGui import QPainter, QColor
 
 
 class Example(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.initUI()
         self.pushButton.clicked.connect(self.clicker)
         self.ev = False
 
+    def initUI(self):
+        self.setGeometry(200, 200, 500, 500)
+        self.pushButton = QPushButton('Нарисовать', self)
+        self.pushButton.move(200, 400)
     def paintEvent(self, event):
         if self.ev:
             qp = QPainter()
